@@ -69,6 +69,11 @@ const TRANSLATIONS = {
       openMenu: 'Menü öffnen',
       closeMenu: 'Menü schließen',
     },
+    banner: {
+      title: 'Konzeptvorschau',
+      body: 'Sie sehen einen frühen Entwurf der Triple Gelato Triathlon Idee. Zurzeit sammeln wir Interesse und Feedback, bevor wir mit Veranstaltungsorten, Vereinen, Gelaterias und möglichen Partnern ins Gespräch gehen. Ihre Rückmeldung hilft dabei, aus dieser Idee eine echte Veranstaltung zu machen.',
+      cta: 'Interesse anmelden',
+    },
     hero: {
       eyebrow: 'Ein mögliches neues Familienevent',
       lead: 'Schwimmen. Radfahren. Laufen. Und nach jeder Etappe wartet eine andere Kugel Eis.',
@@ -286,6 +291,11 @@ const TRANSLATIONS = {
       cta: "I'm interested",
       openMenu: 'Open menu',
       closeMenu: 'Close menu',
+    },
+    banner: {
+      title: 'Concept Preview',
+      body: 'You are viewing an early concept for the Triple Gelato Triathlon. We are currently gathering interest and feedback before approaching venues, clubs, gelaterias and potential partners. Your feedback will help shape the first event.',
+      cta: 'Register your interest',
     },
     hero: {
       eyebrow: 'A possible new family event',

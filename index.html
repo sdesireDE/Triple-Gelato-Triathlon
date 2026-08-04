@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Triple Gelato Triathlon — Interesse anmelden</title>
+  <meta name="description" content="Ein geplantes familienfreundliches Event mit Schwimmen, Radfahren und Laufen — und einer Kugel Gelato nach jeder Etappe. Melden Sie Ihr Interesse an und helfen Sie mit, den ersten Triple Gelato Triathlon zu gestalten.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Triple Gelato Triathlon — Ein mögliches Familienevent">
+  <meta property="og:description" content="Schwimmen. Radfahren. Laufen. Und nach jeder Etappe wartet eine andere Kugel Eis. Melden Sie Ihr Interesse an diesem inklusiven Outdoor-Konzept an.">
+  <meta property="og:image" content="assets/images/og-image.jpg">
+  <meta name="theme-color" content="#FFF6DF">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Structured data: concept only — no confirmed dates or venue -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Triple Gelato Triathlon",
+    "description": "Ein geplantes familienfreundliches Veranstaltungskonzept mit Schwimmen, Radfahren und Laufen, das derzeit das öffentliche Interesse prüft.",
+    "url": ""
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Opening animation panels (swim / cycle / run) -->
+  <div class="intro-panels" aria-hidden="true">
+    <div class="intro-panel intro-panel--swim"></div>
+    <div class="intro-panel intro-panel--cycle"></div>
+    <div class="intro-panel intro-panel--run"></div>
+  </div>
+
+  <!-- Skip link -->
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Zum Hauptinhalt springen</a>
+
+  <!-- Fixed header -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo" data-i18n-aria-label="a11y.logoHome" aria-label="Triple Gelato Triathlon — Startseite">
+        <span class="logo-mark" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 22c0-4 2.5-8 6-8s6 4 6 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="16" cy="11" r="3" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="logo-text">Triple Gelato<br><span class="logo-text-sub">Triathlon</span></span>
+      </a>
+
+      <nav class="nav-desktop" data-i18n-aria-label="a11y.mainNav" aria-label="Hauptnavigation">
+        <ul class="nav-list">
+          <li><a href="#idea" class="nav-link" data-i18n="nav.idea">Die Idee</a></li>
+          <li><a href="#stages" class="nav-link" data-i18n="nav.stages">Drei Disziplinen</a></li>
+          <li><a href="#audience" class="nav-link" data-i18n="nav.audience">Für wen?</a></li>
+          <li><a href="#register" class="nav-link" data-i18n="nav.register">Interesse anmelden</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switcher" role="group" data-i18n-aria-label="language.groupLabel" aria-label="Sprache wählen">
+          <button type="button" class="lang-btn" data-lang="de" aria-pressed="true" aria-label="Deutsch auswählen" title="Deutsch">🇩🇪</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" aria-label="Switch to English" title="English">🇬🇧</button>
+        </div>
+
+        <a href="#register" class="btn btn--primary btn--header" data-i18n="nav.cta">Ich bin interessiert</a>
+
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" data-i18n-aria-label="nav.openMenu" aria-label="Menü öffnen">
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile overlay navigation -->
+  <nav class="nav-overlay" id="mobile-nav" data-i18n-aria-label="a11y.mobileNav" aria-label="Mobile Navigation" hidden>
+    <ul class="nav-overlay-list">
+      <li><a href="#idea" class="nav-overlay-link" data-i18n="nav.idea">Die Idee</a></li>
+      <li><a href="#stages" class="nav-overlay-link" data-i18n="nav.stages">Drei Disziplinen</a></li>
+      <li><a href="#audience" class="nav-overlay-link" data-i18n="nav.audience">Für wen?</a></li>
+      <li><a href="#principles" class="nav-overlay-link" data-i18n="nav.principles">Grundsätze</a></li>
+      <li><a href="#register" class="nav-overlay-link" data-i18n="nav.register">Interesse anmelden</a></li>
+      <li><a href="#partners" class="nav-overlay-link" data-i18n="nav.partners">Partner</a></li>
+      <li><a href="#faq" class="nav-overlay-link" data-i18n="nav.faq">FAQ</a></li>
+    </ul>
+    <a href="#register" class="btn btn--primary btn--overlay" data-i18n="nav.cta">Ich bin interessiert</a>
+  </nav>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <p class="eyebrow reveal" data-delay="0" data-i18n="hero.eyebrow">Ein mögliches neues Familienevent</p>
+
+        <h1 class="hero-title" id="hero-title">
+          <span class="hero-word reveal" data-delay="1">Triple</span>
+          <span class="hero-word hero-word--accent reveal" data-delay="2">Gelato</span>
+          <span class="hero-word reveal" data-delay="3">Triathlon</span>
+        </h1>
+
+        <p class="hero-lead reveal" data-delay="4" data-i18n="hero.lead">Schwimmen. Radfahren. Laufen. Und nach jeder Etappe wartet eine andere Kugel Eis.</p>
+        <p class="hero-support reveal" data-delay="5" data-i18n="hero.support">Ein entspanntes, familienfreundliches Triathlon-Konzept, bei dem das gemeinsame Ankommen wichtiger ist als der erste Platz.</p>
+
+        <div class="hero-actions reveal" data-delay="6">
+          <a href="#register" class="btn btn--primary btn--pill">
+            <span data-i18n="hero.ctaPrimary">Interesse anmelden</span>
+            <span class="btn-arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="#stages" class="btn btn--secondary btn--pill" data-i18n="hero.ctaSecondary">So funktioniert’s</a>
+        </div>
+
+        <div class="status-badge reveal" data-delay="7">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-i18n="hero.status">Wir prüfen derzeit das Interesse</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <!-- Replace gelato-cones.jpg with supplied three-cone photography when available -->
+        <div class="hero-image hero-image--gelato parallax-target">
+          <img src="assets/images/gelato-cones.jpg" alt="" loading="eager" width="600" height="750">
+        </div>
+        <div class="hero-image hero-image--run parallax-target">
+          <img src="assets/images/family-running.jpg" alt="" loading="eager" width="500" height="600">
+        </div>
+        <div class="hero-discipline hero-discipline--swim">
+          <span class="discipline-dot" aria-hidden="true"></span>
+          <span data-i18n="stages.swim.title">Schwimmen</span>
+        </div>
+        <div class="hero-discipline hero-discipline--cycle">
+          <span class="discipline-dot" aria-hidden="true"></span>
+          <span data-i18n="stages.cycle.title">Radfahren</span>
+        </div>
+        <div class="hero-discipline hero-discipline--run">
+          <span class="discipline-dot" aria-hidden="true"></span>
+          <span data-i18n="stages.run.title">Laufen</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Concept introduction -->
+    <section class="section section--idea" id="idea" aria-labelledby="idea-heading">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <h2 class="section-title" id="idea-heading" data-i18n="idea.heading">Drei Disziplinen. Drei Sorten. Ein ziemlich großartiger Tag.</h2>
+          <p class="section-lead" data-i18n="idea.lead">Der Triple Gelato Triathlon wird als inklusives Outdoor-Event für Kinder, Erwachsene, Familien und gemischte Gruppen erkundet. Teilnehmende absolvieren ein zugängliches Schwimmen, Radfahren und Laufen — und an jeder Wechselzone wartet ein anderes Gelato-Erlebnis.</p>
+        </div>
+
+        <aside class="clarification-box reveal-on-scroll" role="note">
+          <svg class="clarification-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <p data-i18n-html="idea.clarification"><strong>Dieses Veranstaltungskonzept befindet sich noch in einer frühen Planungsphase.</strong> Eine Interessensbekundung verpflichtet Sie weder zur Teilnahme noch zu einer Zahlung. Ihre Rückmeldung hilft uns zu verstehen, ob das Event weiterentwickelt werden sollte.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Three disciplines -->
+    <section class="section section--stages" id="stages" aria-labelledby="stages-heading">
+      <div class="container">
+        <h2 class="visually-hidden" id="stages-heading" data-i18n="stages.heading">Die drei Disziplinen</h2>
+
+        <article class="stage-card stage-card--swim reveal-on-scroll">
+          <div class="stage-card-content">
+            <span class="stage-number">01</span>
+            <h3 class="stage-title" data-i18n="stages.swim.title">Schwimmen</h3>
+            <p class="stage-copy" data-i18n="stages.swim.copy">Eine einladende erste Etappe, die an den gewählten Ort und die passenden Teilnehmenden-Gruppen angepasst wird.</p>
+            <span class="stage-gelato" data-i18n="stages.swim.gelato">Erste Kugel in der Wechselzone</span>
+          </div>
+          <div class="stage-card-image">
+            <!-- Replace with supplied family swimming photography when available -->
+            <img src="assets/images/family-swimming.jpg" data-i18n-alt="stages.swim.alt" alt="Schwimmerinnen und Schwimmer im Pool bei einer familienfreundlichen Einheit" loading="lazy" width="600" height="400">
+          </div>
+        </article>
+
+        <article class="stage-card stage-card--cycle reveal-on-scroll">
+          <div class="stage-card-content">
+            <span class="stage-number">02</span>
+            <h3 class="stage-title" data-i18n="stages.cycle.title">Radfahren</h3>
+            <p class="stage-copy" data-i18n="stages.cycle.copy">Eine familienfreundliche Strecke mit Fokus auf Freude, sichere Teilnahme und gemeinsamen Schwung.</p>
+            <span class="stage-gelato" data-i18n="stages.cycle.gelato">Zweite Kugel in der Wechselzone</span>
+          </div>
+          <div class="stage-card-image">
+            <img src="assets/images/family-cycling.jpg" data-i18n-alt="stages.cycle.alt" alt="Radfahrende gemeinsam auf einer landschaftlich schönen Route" loading="lazy" width="600" height="400">
+          </div>
+        </article>
+
+        <article class="stage-card stage-card--run reveal-on-scroll">
+          <div class="stage-card-content">
+            <span class="stage-number">03</span>
+            <h3 class="stage-title" data-i18n="stages.run.title">Laufen</h3>
+            <p class="stage-copy" data-i18n="stages.run.copy">Eine feierliche Schlussetappe, bei der Kinder, Eltern, Freundinnen und Freunde sowie Teams gemeinsam ins Ziel kommen können.</p>
+            <span class="stage-gelato" data-i18n="stages.run.gelato">Die letzte Kugel im Ziel</span>
+          </div>
+          <div class="stage-card-image">
+            <img src="assets/images/family-running.jpg" data-i18n-alt="stages.run.alt" alt="Eine Familie läuft gemeinsam im Freien" loading="lazy" width="600" height="400">
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Who it's for -->
+    <section class="section section--audience" id="audience" aria-labelledby="audience-heading">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <h2 class="section-title" id="audience-heading" data-i18n="audience.heading">Für wen ist die Veranstaltung gedacht?</h2>
+          <p class="section-lead" data-i18n="audience.lead">Endgültige Kategorien, Altersgrenzen, Distanzen, Barrierefreiheit und Ortsdetails würden gemeinsam mit geeigneten Partnern festgelegt.</p>
+        </div>
+
+        <ul class="audience-grid reveal-on-scroll" role="list">
+          <li class="audience-chip" data-i18n="audience.families">Familien</li>
+          <li class="audience-chip" data-i18n="audience.childrenAdults">Kinder in Begleitung Erwachsener</li>
+          <li class="audience-chip" data-i18n="audience.firstTimers">Erstmalige Triathletinnen und Triathleten</li>
+          <li class="audience-chip" data-i18n="audience.recreational">Freizeitaktive</li>
+          <li class="audience-chip" data-i18n="audience.schools">Schul- oder Gemeindegruppen</li>
+          <li class="audience-chip" data-i18n="audience.friends">Freundinnen und Freunde als Team</li>
+          <li class="audience-chip" data-i18n="audience.movement">Menschen, die Bewegung mehr schätzen als Medaillen</li>
+          <li class="audience-chip" data-i18n="audience.icecream">Menschen, die stark durch Eiscreme motiviert sind</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Event principles -->
+    <section class="section section--principles" id="principles" aria-labelledby="principles-heading">
+      <div class="container">
+        <h2 class="section-title reveal-on-scroll" id="principles-heading" data-i18n="principles.heading">Unsere Grundsätze</h2>
+
+        <div class="principles-grid">
+          <article class="principle-card reveal-on-scroll">
+            <h3 class="principle-title" data-i18n="principles.accessible.title">Zugänglich</h3>
+            <p data-i18n="principles.accessible.copy">Distanzen und Formate würden so gestaltet, dass ein breites Spektrum an Fähigkeiten willkommen ist.</p>
+          </article>
+          <article class="principle-card reveal-on-scroll">
+            <h3 class="principle-title" data-i18n="principles.family.title">Familienorientiert</h3>
+            <p data-i18n="principles.family.copy">Die Atmosphäre soll Familien und Freundinnen sowie Freunde dazu ermutigen, gemeinsam teilzunehmen.</p>
+          </article>
+          <article class="principle-card reveal-on-scroll">
+            <h3 class="principle-title" data-i18n="principles.local.title">Lokal verankert</h3>
+            <p data-i18n="principles.local.copy">Das Konzept soll lokale Vereine, Veranstaltungsorte und Eiscreme-Partner einbinden.</p>
+          </article>
+          <article class="principle-card reveal-on-scroll">
+            <h3 class="principle-title" data-i18n="principles.joy.title">Sportlich, aber entspannt</h3>
+            <p data-i18n="principles.joy.copy">Zeitnahme mag es geben — Freude und das Ankommen stehen jedoch im Mittelpunkt.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Register interest form -->
+    <section class="section section--register" id="register" aria-labelledby="register-heading">
+      <div class="container container--narrow">
+        <div class="section-header reveal-on-scroll">
+          <h2 class="section-title" id="register-heading" data-i18n="register.heading">Sollen wir das gemeinsam möglich machen?</h2>
+          <p class="section-lead" data-i18n="register.lead">Sagen Sie uns, wie Ihr idealer Triple Gelato Triathlon aussehen würde. Frühe Interessensbekundungen helfen uns, Veranstaltungsorte, Sportverbände und Gelato-Partner mit echtem Interesse zu überzeugen.</p>
+        </div>
+
+        <form class="interest-form reveal-on-scroll" id="interest-form" novalidate>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="name"><span data-i18n="form.name">Name</span> <span class="required" aria-hidden="true">*</span></label>
+              <input type="text" id="name" name="name" required autocomplete="name" aria-describedby="name-error">
+              <span class="form-error" id="name-error" role="alert"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="email"><span data-i18n="form.email">E-Mail-Adresse</span> <span class="required" aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email" aria-describedby="email-error">
+              <span class="form-error" id="email-error" role="alert"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="postcode"><span data-i18n="form.postcode">Postleitzahl oder Ort</span> <span class="required" aria-hidden="true">*</span></label>
+              <input type="text" id="postcode" name="postcode" required autocomplete="postal-code" aria-describedby="postcode-error">
+              <span class="form-error" id="postcode-error" role="alert"></span>
+            </div>
+
+            <fieldset class="form-field form-field--full" id="who-fieldset">
+              <legend><span data-i18n="form.who">Wer würde teilnehmen?</span> <span class="required" aria-hidden="true">*</span></legend>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="who" value="just-me" required> <span data-i18n="form.whoJustMe">Nur ich</span></label>
+                <label class="radio-label"><input type="radio" name="who" value="me-and-child"> <span data-i18n="form.whoMeChild">Ich und ein Kind</span></label>
+                <label class="radio-label"><input type="radio" name="who" value="family"> <span data-i18n="form.whoFamily">Eine Familie</span></label>
+                <label class="radio-label"><input type="radio" name="who" value="friends"> <span data-i18n="form.whoFriends">Eine Freundesgruppe</span></label>
+                <label class="radio-label"><input type="radio" name="who" value="organisation"> <span data-i18n="form.whoOrg">Schule, Verein oder Organisation</span></label>
+                <label class="radio-label"><input type="radio" name="who" value="partner"> <span data-i18n="form.whoPartner">Ich interessiere mich als möglicher Partner</span></label>
+              </div>
+              <span class="form-error" id="who-error" role="alert"></span>
+            </fieldset>
+
+            <div class="form-field">
+              <label for="participants"><span data-i18n="form.participants">Ungefähre Anzahl der Teilnehmenden</span> <span class="required" aria-hidden="true">*</span></label>
+              <input type="number" id="participants" name="participants" min="1" max="999" required aria-describedby="participants-error">
+              <span class="form-error" id="participants-error" role="alert"></span>
+            </div>
+
+            <fieldset class="form-field form-field--full" id="age-fieldset">
+              <legend><span data-i18n="form.age">Altersgruppen der Teilnehmenden</span> <span class="required" aria-hidden="true">*</span></legend>
+              <div class="checkbox-group">
+                <label class="checkbox-label"><input type="checkbox" name="age" value="under-6"> <span data-i18n="form.ageUnder6">Unter 6</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="age" value="6-9"> <span data-i18n="form.age6to9">6–9</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="age" value="10-13"> <span data-i18n="form.age10to13">10–13</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="age" value="14-17"> <span data-i18n="form.age14to17">14–17</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="age" value="18-plus"> <span data-i18n="form.age18plus">18+</span></label>
+              </div>
+              <span class="form-error" id="age-error" role="alert"></span>
+            </fieldset>
+
+            <fieldset class="form-field form-field--full" id="format-fieldset">
+              <legend><span data-i18n="form.format">Bevorzugtes Veranstaltungsformat</span> <span class="required" aria-hidden="true">*</span></legend>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="format" value="short-playful" required> <span data-i18n="form.formatShort">Sehr kurz und spielerisch</span></label>
+                <label class="radio-label"><input type="radio" name="format" value="beginner"> <span data-i18n="form.formatBeginner">Einsteigerfreundlich</span></label>
+                <label class="radio-label"><input type="radio" name="format" value="moderate"> <span data-i18n="form.formatModerate">Eine moderate Herausforderung für Familien</span></label>
+                <label class="radio-label"><input type="radio" name="format" value="distance-options"> <span data-i18n="form.formatDistances">Mehrere Streckenlängen</span></label>
+                <label class="radio-label"><input type="radio" name="format" value="not-sure"> <span data-i18n="form.formatUnsure">Noch unsicher</span></label>
+              </div>
+              <span class="form-error" id="format-error" role="alert"></span>
+            </fieldset>
+
+            <fieldset class="form-field form-field--full" id="travel-fieldset">
+              <legend><span data-i18n="form.travel">Wie weit würden Sie anreisen?</span> <span class="required" aria-hidden="true">*</span></legend>
+              <div class="radio-group radio-group--inline">
+                <label class="radio-label"><input type="radio" name="travel" value="15km" required> <span data-i18n="form.travel15">Bis zu 15 km</span></label>
+                <label class="radio-label"><input type="radio" name="travel" value="30km"> <span data-i18n="form.travel30">Bis zu 30 km</span></label>
+                <label class="radio-label"><input type="radio" name="travel" value="60km"> <span data-i18n="form.travel60">Bis zu 60 km</span></label>
+                <label class="radio-label"><input type="radio" name="travel" value="further"> <span data-i18n="form.travelFurther">Für die passende Veranstaltung auch weiter</span></label>
+              </div>
+              <span class="form-error" id="travel-error" role="alert"></span>
+            </fieldset>
+
+            <fieldset class="form-field form-field--full" id="time-fieldset">
+              <legend><span data-i18n="form.time">Bevorzugte Jahreszeit</span> <span class="required" aria-hidden="true">*</span></legend>
+              <div class="radio-group radio-group--inline">
+                <label class="radio-label"><input type="radio" name="time" value="spring" required> <span data-i18n="form.timeSpring">Frühling</span></label>
+                <label class="radio-label"><input type="radio" name="time" value="summer"> <span data-i18n="form.timeSummer">Sommer</span></label>
+                <label class="radio-label"><input type="radio" name="time" value="autumn"> <span data-i18n="form.timeAutumn">Frühherbst</span></label>
+                <label class="radio-label"><input type="radio" name="time" value="no-preference"> <span data-i18n="form.timeNone">Keine Präferenz</span></label>
+              </div>
+              <span class="form-error" id="time-error" role="alert"></span>
+            </fieldset>
+
+            <fieldset class="form-field form-field--full" id="dietary-fieldset">
+              <legend data-i18n="form.dietary">Ernährungsbedürfnisse</legend>
+              <div class="checkbox-group">
+                <label class="checkbox-label"><input type="checkbox" name="dietary" value="dairy-free"> <span data-i18n="form.dietaryDairy">Laktosefrei / milchfrei</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="dietary" value="vegan"> <span data-i18n="form.dietaryVegan">Vegan</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="dietary" value="nut-free"> <span data-i18n="form.dietaryNut">Nussfrei</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="dietary" value="gluten-free"> <span data-i18n="form.dietaryGluten">Glutenfrei</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="dietary" value="other"> <span data-i18n="form.dietaryOther">Sonstiges</span></label>
+              </div>
+            </fieldset>
+
+            <div class="form-field form-field--full">
+              <label for="comments" data-i18n="form.comments">Optionale Anmerkungen</label>
+              <textarea id="comments" name="comments" rows="4" data-i18n-placeholder="form.commentsPlaceholder" placeholder="Teilen Sie uns alles weitere mit, das bei der Gestaltung helfen könnte…"></textarea>
+            </div>
+
+            <div class="form-field form-field--full">
+              <label class="checkbox-label checkbox-label--standalone">
+                <input type="checkbox" name="keep-informed" value="yes">
+                <span data-i18n="form.keepInformed">Bitte halten Sie mich über die Entwicklung des Triple Gelato Triathlons auf dem Laufenden.</span>
+              </label>
+            </div>
+
+            <div class="form-field form-field--full">
+              <label class="checkbox-label checkbox-label--standalone">
+                <input type="checkbox" id="partner-toggle" name="partner-interest" value="yes">
+                <span data-i18n="form.partnerToggle">Ich vertrete einen möglichen Veranstaltungsort, Verein, Verband, eine Gelateria, einen Hersteller oder Sponsor.</span>
+              </label>
+            </div>
+
+            <div class="partner-fields" id="partner-fields" hidden>
+              <h3 class="partner-fields-title" data-i18n="form.partnerDetails">Partnerangaben</h3>
+
+              <div class="form-field">
+                <label for="org-name"><span data-i18n="form.orgName">Name der Organisation</span> <span class="required" aria-hidden="true">*</span></label>
+                <input type="text" id="org-name" name="org-name" aria-describedby="org-name-error">
+                <span class="form-error" id="org-name-error" role="alert"></span>
+              </div>
+
+              <div class="form-field">
+                <label for="org-type"><span data-i18n="form.orgType">Art der Organisation</span> <span class="required" aria-hidden="true">*</span></label>
+                <select id="org-type" name="org-type" aria-describedby="org-type-error">
+                  <option value="" data-i18n="form.orgTypeSelect">Typ auswählen…</option>
+                  <option value="venue" data-i18n="form.orgVenue">Veranstaltungsort</option>
+                  <option value="sports" data-i18n="form.orgSports">Sportverein oder -verband</option>
+                  <option value="gelato" data-i18n="form.orgGelato">Gelateria oder Eiscreme-Hersteller</option>
+                  <option value="community" data-i18n="form.orgCommunity">Gemeindeorganisation</option>
+                  <option value="accessibility" data-i18n="form.orgAccessibility">Partner für Barrierefreiheit</option>
+                  <option value="sponsor" data-i18n="form.orgSponsor">Sponsor</option>
+                  <option value="other" data-i18n="form.orgOther">Sonstiges</option>
+                </select>
+                <span class="form-error" id="org-type-error" role="alert"></span>
+              </div>
+
+              <div class="form-field">
+                <label for="org-website" data-i18n="form.orgWebsite">Website</label>
+                <input type="url" id="org-website" name="org-website" placeholder="https://">
+              </div>
+
+              <div class="form-field form-field--full">
+                <label for="org-contribution"><span data-i18n="form.orgContribution">Wie möchten Sie möglicherweise beitragen?</span> <span class="required" aria-hidden="true">*</span></label>
+                <textarea id="org-contribution" name="org-contribution" rows="3" aria-describedby="org-contribution-error"></textarea>
+                <span class="form-error" id="org-contribution-error" role="alert"></span>
+              </div>
+
+              <div class="form-field">
+                <label for="org-phone" data-i18n="form.orgPhone">Telefonnummer (optional)</label>
+                <input type="tel" id="org-phone" name="org-phone" autocomplete="tel">
+              </div>
+            </div>
+
+            <div class="form-field form-field--full">
+              <label class="checkbox-label checkbox-label--standalone">
+                <input type="checkbox" id="privacy-consent" name="privacy-consent" value="yes" required>
+                <span data-i18n="form.privacy">Ich willige ein, dass meine Angaben zum Zweck der Interessensermittlung für dieses Veranstaltungskonzept gespeichert werden.</span> <span class="required" aria-hidden="true">*</span>
+              </label>
+              <span class="form-error" id="privacy-error" role="alert"></span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--pill btn--submit">
+            <span data-i18n="form.submit">Interesse absenden</span>
+            <span class="btn-arrow" aria-hidden="true">→</span>
+          </button>
+        </form>
+
+        <div class="form-success" id="form-success" hidden role="status">
+          <div class="form-success-icon" aria-hidden="true">✓</div>
+          <h3 data-i18n="form.successTitle">Vielen Dank für Ihre Interessensbekundung</h3>
+          <p data-i18n="form.successBody">Vielen Dank. Ihr Interesse wurde in diesem Prototyp gespeichert. Sobald der Live-Formularservice verbunden ist, werden Einsendungen an das Organisationsteam übermittelt.</p>
+          <button type="button" class="btn btn--secondary btn--pill" id="form-reset" data-i18n="form.reset">Weitere Antwort absenden</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners -->
+    <section class="section section--partners" id="partners" aria-labelledby="partners-heading">
+      <div class="container">
+        <div class="partners-layout reveal-on-scroll">
+          <div class="partners-content">
+            <h2 class="section-title" id="partners-heading" data-i18n="partners.heading">Eine Strecke braucht einen Ort. Eine Wechselzone braucht Gelato.</h2>
+            <p class="section-lead" data-i18n="partners.lead">Wir freuen uns auch über Rückmeldungen von Schwimmbädern, Sportvereinen, lokalen Verbänden, Grundstückseigentümern, Kommunen, Gelaterien, Eiscreme-Herstellern und Unternehmen, die das erste Event mitgestalten möchten.</p>
+            <a href="#register" class="btn btn--primary btn--pill" id="partner-cta">
+              <span data-i18n="partners.cta">Über eine Partnerschaft sprechen</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <ul class="partner-categories" role="list">
+            <li class="partner-category" data-i18n="partners.host">Veranstaltungsort</li>
+            <li class="partner-category" data-i18n="partners.sports">Sport- und Streckenpartner</li>
+            <li class="partner-category" data-i18n="partners.gelato">Gelato- oder Eiscreme-Partner</li>
+            <li class="partner-category" data-i18n="partners.community">Gemeindepartner</li>
+            <li class="partner-category" data-i18n="partners.accessibility">Partner für Barrierefreiheit</li>
+            <li class="partner-category" data-i18n="partners.sponsor">Sponsor</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--faq" id="faq" aria-labelledby="faq-heading">
+      <div class="container container--narrow">
+        <h2 class="section-title reveal-on-scroll" id="faq-heading" data-i18n="faq.heading">Fragen und Antworten</h2>
+
+        <dl class="faq-list">
+          <div class="faq-item reveal-on-scroll">
+            <dt data-i18n="faq.q1">Ist die Veranstaltung bestätigt?</dt>
+            <dd data-i18n="faq.a1">Nein. Sie befindet sich derzeit in der Phase der Interessensermittlung und Partnerentwicklung.</dd>
+          </div>
+          <div class="faq-item reveal-on-scroll">
+            <dt data-i18n="faq.q2">Wo wird sie stattfinden?</dt>
+            <dd data-i18n="faq.a2">Es ist noch kein Veranstaltungsort ausgewählt. Interesse nach Region hilft bei Gesprächen mit möglichen Gastgebern.</dd>
+          </div>
+          <div class="faq-item reveal-on-scroll">
+            <dt data-i18n="faq.q3">Wie lang wird jede Etappe sein?</dt>
+            <dd data-i18n="faq.a3">Die Distanzen sind noch nicht festgelegt. Ziel ist es, zugängliche Optionen zu schaffen — keine einschüchternde Einheitsstrecke.</dd>
+          </div>
+          <div class="faq-item reveal-on-scroll">
+            <dt data-i18n="faq.q4">Wird es Zeitnahme geben?</dt>
+            <dd data-i18n="faq.a4">Das ist noch nicht entschieden. Im Vordergrund stehen Teilnahme, Freude und ein sicheres Ankommen.</dd>
+          </div>
+          <div class="faq-item reveal-on-scroll">
+            <dt data-i18n="faq.q5">Ist es nur für Kinder?</dt>
+            <dd data-i18n="faq.a5">Nein. Das Konzept richtet sich an Familien, Erwachsene, Kinder und gemischte Gruppen — vorbehaltlich endgültiger Sicherheits- und Altersregelungen.</dd>
+          </div>
+          <div class="faq-item reveal-on-scroll">
+            <dt data-i18n="faq.q6">Wird es Alternativen für besondere Ernährungsbedürfnisse geben?</dt>
+            <dd data-i18n="faq.a6">Der Planungsprozess sollte wo immer praktikabel milchfreie, vegane und allergiebewusste Optionen vorsehen.</dd>
+          </div>
+          <div class="faq-item reveal-on-scroll">
+            <dt data-i18n="faq.q7">Kostet die Interessensbekundung etwas?</dt>
+            <dd data-i18n="faq.a7">Nein. Sie ist kostenlos und begründet keine Verpflichtung.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="footer-logo">Triple Gelato Triathlon</p>
+          <p class="footer-tagline" data-i18n="footer.tagline">Ein geplantes Familien-Event mit Schwimmen, Radfahren und Laufen</p>
+          <p class="footer-disclaimer" data-i18n="footer.disclaimer">Das Veranstaltungskonzept befindet sich derzeit in Entwicklung. Termin, Veranstaltungsort, Format und Teilnahmebedingungen stehen noch nicht fest.</p>
+        </div>
+
+        <nav class="footer-nav" data-i18n-aria-label="a11y.footerNav" aria-label="Fußzeilennavigation">
+          <ul role="list">
+            <li><a href="#idea" data-i18n="nav.idea">Die Idee</a></li>
+            <li><a href="#stages" data-i18n="nav.stages">Drei Disziplinen</a></li>
+            <li><a href="#audience" data-i18n="nav.audience">Für wen?</a></li>
+            <li><a href="#register" data-i18n="nav.register">Interesse anmelden</a></li>
+            <li><a href="#partners" data-i18n="nav.partners">Partner</a></li>
+            <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-contact">
+          <!-- TODO: Replace with real contact email before publication -->
+          <a href="mailto:hello@triplegelatotriathlon.example">hello@triplegelatotriathlon.example</a>
+          <ul class="footer-legal" role="list">
+            <!-- TODO: Add real privacy policy and imprint pages before publication -->
+            <li><a href="#privacy" data-i18n="footer.privacy">Datenschutzerklärung</a></li>
+            <li><a href="#imprint" data-i18n="footer.imprint">Impressum</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="footer-copy">&copy; <span id="year"></span> Triple Gelato Triathlon. <span data-i18n="footer.rights">Alle Rechte vorbehalten.</span></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

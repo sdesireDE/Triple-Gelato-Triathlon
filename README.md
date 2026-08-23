@@ -30,7 +30,8 @@ Triple Gelato Triathlon/
 ├── script.js           # Interactions, form logic and core translations (de/en)
 ├── locales-it-tr-ar.js # Italian, Turkish and Arabic translations
 ├── scripts/
-│   └── validate-i18n.js # Translation key parity checker
+│   ├── validate-i18n.js              # Translation key parity checker
+│   └── apply-localisation-replacements.js # Apply editorial copy from markdown
 ├── assets/
 │   └── images/
 │       ├── gelato-cones.jpg      # Hero gelato imagery

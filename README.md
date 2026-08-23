@@ -2,7 +2,7 @@
 
 A one-page website for gauging public interest in the proposed **Triple Gelato Triathlon** — a family-friendly swim, cycle and run event with a gelato scoop at every transition.
 
-The site supports **German** (default) and **English**, switched via flag buttons in the header.
+The site supports **German** (default), **English**, **Italian**, **Turkish** and **Arabic**, switched via the header language controls.
 
 ## How to open the site
 
@@ -27,7 +27,10 @@ python3 -m http.server 8080
 Triple Gelato Triathlon/
 ├── index.html          # Main page (German source content by default)
 ├── styles.css          # All styles
-├── script.js           # Interactions, form logic and translations
+├── script.js           # Interactions, form logic and core translations (de/en)
+├── locales-it-tr-ar.js # Italian, Turkish and Arabic translations
+├── scripts/
+│   └── validate-i18n.js # Translation key parity checker
 ├── assets/
 │   └── images/
 │       ├── gelato-cones.jpg      # Hero gelato imagery
@@ -38,27 +41,29 @@ Triple Gelato Triathlon/
 └── README.md
 ```
 
-## Language support (German / English)
+## Language support (German, English, Italian, Turkish, Arabic)
 
 - **Default language:** German (`de`) for first-time visitors
-- **Switcher:** Compact 🇩🇪 / 🇬🇧 buttons in the fixed header (visible on desktop and mobile)
+- **Supported codes:** `de`, `en`, `it`, `tr`, `ar`
+- **Switcher:** Five language controls in the fixed header
+  - **Desktop:** All five visible in a horizontal row (🇩🇪 🇬🇧 🇮🇹 🇹🇷 ع)
+  - **Mobile:** Current language button plus a compact expansion control that opens a popover with all languages
+  - **Arabic** uses the letter **ع** (not a national flag)
 - **Persistence:** Choice is stored in `localStorage` under `tgt_preferred_language`
 - Behaviour:
   - First visit → German
-  - Switch to English → English immediately, and on later visits
-  - Switch back to German → German subsequently
-- Browser language is **not** used to override the German default
+  - Switch to any language → applies immediately and persists on refresh
+  - Browser language is **not** used to override the German default
+- **RTL:** When Arabic is selected, `<html lang="ar" dir="rtl">` is set; other languages use `dir="ltr"`
 - Source HTML is written in German to avoid a visible language flash on first load
 
 ### Where translations live
 
-All strings are in the `TRANSLATIONS` object at the top of `script.js`:
+Core German and English strings are in the `TRANSLATIONS` object in `script.js`. Italian, Turkish and Arabic are in `locales-it-tr-ar.js`, merged at runtime:
 
 ```javascript
-const TRANSLATIONS = {
-  de: { ... },
-  en: { ... }
-};
+const TRANSLATIONS = { de: { ... }, en: { ... } };
+Object.assign(TRANSLATIONS, window.__TGT_EXTRA_LOCALES__);
 ```
 
 HTML elements use attributes such as:
@@ -70,9 +75,29 @@ HTML elements use attributes such as:
 - `data-i18n-alt="stages.run.alt"`
 - `data-i18n-title="…"`
 
-To add or edit a string: update both `de` and `en` keys in `TRANSLATIONS`, then add the matching `data-i18n*` attribute in `index.html` if it is a new element.
+To add or edit a string: update the key in **all five** locale objects, then add the matching `data-i18n*` attribute in `index.html` if it is a new element.
 
-`document.documentElement.lang`, `document.title`, meta description and Open Graph tags update when the language changes.
+Validate key parity with:
+
+```bash
+node scripts/validate-i18n.js
+```
+
+`document.documentElement.lang`, `document.documentElement.dir`, `document.title`, meta description and Open Graph tags update when the language changes.
+
+Form submissions include `language: currentLanguage` (`de` | `en` | `it` | `tr` | `ar`).
+
+### Arabic fonts
+
+Syne and DM Sans do not fully support Arabic script. When `lang="ar"`, the site uses **Noto Sans Arabic** (loaded from Google Fonts) via CSS custom properties. Latin-script languages keep the existing display/body fonts.
+
+### Adding another language later
+
+1. Add a new top-level key to `TRANSLATIONS` (or an extra locales file merged the same way)
+2. Copy the full nested structure from `de` and translate every key
+3. Add a header control with `data-lang="xx"` and fixed `LANG_SELECT_LABELS` / `LANG_GLYPHS` entries in `script.js`
+4. Add the code to `SUPPORTED_LANGS`
+5. Run `node scripts/validate-i18n.js`
 
 ## Image assets
 
@@ -173,5 +198,5 @@ Tested for modern browsers (Chrome, Firefox, Safari, Edge). Uses progressive enh
 ## Development notes
 
 - Form submissions in prototype mode are stored under `tgt_interest_submissions` in `localStorage`.
-- Language preference is stored under `tgt_preferred_language` (`de` or `en`).
+- Language preference is stored under `tgt_preferred_language` (`de`, `en`, `it`, `tr`, or `ar`).
 - The opening animation uses three colour panels representing swim (blue), cycle (green), and run (pink). It is disabled entirely when reduced motion is preferred.

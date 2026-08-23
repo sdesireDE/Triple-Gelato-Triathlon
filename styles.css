@@ -125,7 +125,7 @@ ol[role="list"] {
 .skip-link {
   position: absolute;
   top: -100%;
-  left: var(--space-sm);
+  inset-inline-start: var(--space-sm);
   z-index: 10000;
   padding: var(--space-xs) var(--space-sm);
   background: var(--color-cocoa);
@@ -254,14 +254,27 @@ ol[role="list"] {
   align-items: center;
   gap: 0.625rem;
   flex-shrink: 0;
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
 /* Language switcher */
 .lang-switcher {
+  position: relative;
   display: flex;
   align-items: center;
+}
+
+.lang-switcher-row {
+  display: none;
+  align-items: center;
   gap: 0.25rem;
+}
+
+.lang-switcher-compact {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
 }
 
 .lang-btn {
@@ -279,6 +292,78 @@ ol[role="list"] {
   background: transparent;
   opacity: 0.55;
   transition: opacity var(--transition), border-color var(--transition), background var(--transition);
+}
+
+.lang-btn--arabic,
+.lang-btn.lang-btn--arabic {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.lang-btn-glyph {
+  display: inline-block;
+  line-height: 1;
+}
+
+.lang-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 40px;
+  min-width: 28px;
+  min-height: 40px;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-cocoa);
+  opacity: 0.65;
+  font-size: 0.875rem;
+  transition: opacity var(--transition), border-color var(--transition), background var(--transition);
+}
+
+.lang-expand-btn:hover,
+.lang-expand-btn[aria-expanded="true"] {
+  opacity: 1;
+  border-color: rgba(37, 32, 29, 0.15);
+  background: rgba(37, 32, 29, 0.04);
+}
+
+.lang-expand-btn:focus-visible {
+  outline: 2px solid var(--color-pool);
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+.lang-popover {
+  position: absolute;
+  top: calc(100% + 0.375rem);
+  inset-inline-end: 0;
+  z-index: 200;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.375rem;
+  background: var(--color-off-white);
+  border: 1px solid rgba(37, 32, 29, 0.1);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  min-width: 9.5rem;
+}
+
+.lang-popover[hidden] {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .lang-switcher-row {
+    display: flex;
+  }
+
+  .lang-switcher-compact {
+    display: none;
+  }
 }
 
 .lang-btn:hover {
@@ -504,6 +589,10 @@ ol[role="list"] {
 
 .btn:hover .btn-arrow {
   transform: translateX(4px);
+}
+
+html[dir="rtl"] .btn:hover .btn-arrow {
+  transform: translateX(-4px);
 }
 
 .btn--submit {
@@ -922,7 +1011,7 @@ ol[role="list"] {
   gap: var(--space-sm);
   padding: var(--space-md);
   background: var(--color-off-white);
-  border-left: 4px solid var(--color-sorbet);
+  border-inline-start: 4px solid var(--color-sorbet);
   border-radius: var(--radius-md);
   max-width: 48rem;
 }
@@ -1378,7 +1467,7 @@ ol[role="list"] {
 .form-nav-next,
 .form-nav-submit {
   order: 2;
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
 @media (max-width: 479px) {
@@ -1773,5 +1862,58 @@ ol[role="list"] {
 
   .hero-content {
     max-width: 40rem;
+  }
+}
+
+/* --- Arabic / RTL --- */
+html[lang="ar"] {
+  --font-display: 'Noto Sans Arabic', 'Syne', system-ui, sans-serif;
+  --font-body: 'Noto Sans Arabic', 'DM Sans', system-ui, sans-serif;
+}
+
+html[dir="rtl"] body {
+  text-align: start;
+}
+
+html[dir="rtl"] .radio-label,
+html[dir="rtl"] .checkbox-label,
+html[dir="rtl"] .interest-type-option {
+  flex-direction: row-reverse;
+  text-align: start;
+}
+
+html[dir="rtl"] .form-progress-meta {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .form-progress-label {
+  text-align: start;
+}
+
+html[dir="rtl"] .concept-banner-cta,
+html[dir="rtl"] .hero-actions,
+html[dir="rtl"] .form-nav {
+  direction: rtl;
+}
+
+html[dir="rtl"] .hero-collage,
+html[dir="rtl"] .hero-image--gelato,
+html[dir="rtl"] .hero-image--run {
+  direction: ltr;
+}
+
+html[dir="rtl"] .hero-disciplines {
+  direction: rtl;
+}
+
+html[dir="rtl"] .nav-overlay-list,
+html[dir="rtl"] .footer-grid {
+  text-align: start;
+}
+
+@media (max-width: 767px) {
+  html[dir="rtl"] .form-nav-next,
+  html[dir="rtl"] .form-nav-submit {
+    margin-inline-start: 0;
   }
 }

@@ -16,7 +16,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
 
@@ -68,8 +68,26 @@
 
       <div class="header-actions">
         <div class="lang-switcher" role="group" data-i18n-aria-label="language.groupLabel" aria-label="Sprache wählen">
-          <button type="button" class="lang-btn" data-lang="de" aria-pressed="true" aria-label="Deutsch auswählen" title="Deutsch">🇩🇪</button>
-          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" aria-label="Switch to English" title="English">🇬🇧</button>
+          <div class="lang-switcher-row" id="lang-switcher-row">
+            <button type="button" class="lang-btn" data-lang="de" aria-pressed="true" aria-label="Deutsch auswählen" title="Deutsch">🇩🇪</button>
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" aria-label="Switch to English" title="English">🇬🇧</button>
+            <button type="button" class="lang-btn" data-lang="it" aria-pressed="false" aria-label="Passa all'italiano" title="Italiano">🇮🇹</button>
+            <button type="button" class="lang-btn" data-lang="tr" aria-pressed="false" aria-label="Türkçeye geç" title="Türkçe">🇹🇷</button>
+            <button type="button" class="lang-btn lang-btn--arabic" data-lang="ar" aria-pressed="false" aria-label="التبديل إلى العربية" title="العربية"><span class="lang-btn-glyph" aria-hidden="true">ع</span></button>
+          </div>
+          <div class="lang-switcher-compact" id="lang-switcher-compact">
+            <button type="button" class="lang-btn lang-btn--current" id="lang-current-btn" data-lang="de" aria-pressed="true" aria-haspopup="listbox" aria-expanded="false" aria-controls="lang-popover" aria-label="Deutsch auswählen" title="Deutsch">🇩🇪</button>
+            <button type="button" class="lang-expand-btn" id="lang-expand-btn" aria-expanded="false" aria-controls="lang-popover" data-i18n-aria-label="language.moreLanguages" aria-label="Weitere Sprachen">
+              <span class="lang-expand-icon" aria-hidden="true">▾</span>
+            </button>
+            <div class="lang-popover" id="lang-popover" role="listbox" hidden>
+              <button type="button" class="lang-btn lang-popover-option" data-lang="de" role="option" aria-selected="true" aria-label="Deutsch auswählen" title="Deutsch">🇩🇪</button>
+              <button type="button" class="lang-btn lang-popover-option" data-lang="en" role="option" aria-selected="false" aria-label="Switch to English" title="English">🇬🇧</button>
+              <button type="button" class="lang-btn lang-popover-option" data-lang="it" role="option" aria-selected="false" aria-label="Passa all'italiano" title="Italiano">🇮🇹</button>
+              <button type="button" class="lang-btn lang-popover-option" data-lang="tr" role="option" aria-selected="false" aria-label="Türkçeye geç" title="Türkçe">🇹🇷</button>
+              <button type="button" class="lang-btn lang-popover-option lang-btn--arabic" data-lang="ar" role="option" aria-selected="false" aria-label="التبديل إلى العربية" title="العربية"><span class="lang-btn-glyph" aria-hidden="true">ع</span></button>
+            </div>
+          </div>
         </div>
 
         <a href="#register" class="btn btn--primary btn--header" data-i18n="nav.cta">Ich bin interessiert</a>
@@ -643,6 +661,7 @@
     </div>
   </footer>
 
+  <script src="locales-it-tr-ar.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

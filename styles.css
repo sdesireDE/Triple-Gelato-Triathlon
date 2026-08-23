@@ -889,6 +889,12 @@ ol[role="list"] {
   margin-bottom: var(--space-md);
 }
 
+@media (max-width: 767px) {
+  .section-title {
+    line-height: 1.22;
+  }
+}
+
 .section-lead {
   font-size: 1.0625rem;
   line-height: 1.65;
@@ -1194,22 +1200,205 @@ ol[role="list"] {
   cursor: pointer;
 }
 
-.partner-fields {
-  grid-column: 1 / -1;
-  padding: var(--space-md);
-  background: rgba(255, 253, 248, 0.6);
-  border-radius: var(--radius-md);
-  border: 1px dashed rgba(37, 32, 29, 0.15);
-  display: grid;
-  grid-template-columns: 1fr;
+/* Interest type selector */
+.interest-type {
+  border: none;
+  margin: 0 0 var(--space-md);
+  padding: 0;
+}
+
+.interest-type-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.interest-type-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  min-height: 44px;
+  padding: 0.625rem 0.875rem;
+  background: rgba(255, 253, 248, 0.7);
+  border: 2px solid rgba(37, 32, 29, 0.1);
+  border-radius: var(--radius-pill);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.interest-type-option:has(input:checked) {
+  border-color: var(--color-pool);
+  background: rgba(116, 200, 232, 0.12);
+}
+
+.interest-type-option input {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+  accent-color: var(--color-cocoa);
+  cursor: pointer;
+}
+
+/* Multi-step form wizard */
+.form-wizard {
+  display: flex;
+  flex-direction: column;
   gap: var(--space-md);
 }
 
-.partner-fields-title {
-  grid-column: 1 / -1;
+.form-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-progress-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  font-size: 0.875rem;
+}
+
+.form-progress-count {
   font-family: var(--font-display);
-  font-size: 1.125rem;
   font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--color-cocoa);
+}
+
+.form-progress-label {
+  font-weight: 500;
+  opacity: 0.65;
+  text-align: right;
+}
+
+.form-progress-track {
+  height: 4px;
+  background: rgba(37, 32, 29, 0.1);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.form-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-strawberry), var(--color-pool));
+  border-radius: var(--radius-pill);
+  transition: width 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-progress-fill {
+    transition: none;
+  }
+}
+
+.form-steps {
+  position: relative;
+  min-height: 0;
+}
+
+.form-step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.form-step[hidden] {
+  display: none !important;
+}
+
+.form-step-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.form-step-fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.form-step.form-step--exit {
+  animation: formStepExit 0.25s ease forwards;
+}
+
+.form-step.form-step--enter {
+  animation: formStepEnter 0.3s ease forwards;
+}
+
+@keyframes formStepExit {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(-12px); }
+}
+
+@keyframes formStepEnter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-step.form-step--exit,
+  .form-step.form-step--enter {
+    animation: none;
+  }
+}
+
+.form-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(37, 32, 29, 0.08);
+}
+
+.form-nav-back {
+  order: 1;
+}
+
+.form-nav-next,
+.form-nav-submit {
+  order: 2;
+  margin-left: auto;
+}
+
+@media (max-width: 479px) {
+  .form-nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-nav-back,
+  .form-nav-next,
+  .form-nav-submit {
+    order: unset;
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .form-progress-label {
+    display: none;
+  }
+}
+
+.form-partner-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.form-partner-panel[hidden] {
+  display: none !important;
 }
 
 /* Form success */

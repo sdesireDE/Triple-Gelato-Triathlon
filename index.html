@@ -290,129 +290,193 @@
         </div>
 
         <form class="interest-form reveal-on-scroll" id="interest-form" novalidate>
-          <div class="form-grid">
-            <div class="form-field">
-              <label for="name"><span data-i18n="form.name">Name</span> <span class="required" aria-hidden="true">*</span></label>
-              <input type="text" id="name" name="name" required autocomplete="name" aria-describedby="name-error">
-              <span class="form-error" id="name-error" role="alert"></span>
-            </div>
-
-            <div class="form-field">
-              <label for="email"><span data-i18n="form.email">E-Mail-Adresse</span> <span class="required" aria-hidden="true">*</span></label>
-              <input type="email" id="email" name="email" required autocomplete="email" aria-describedby="email-error">
-              <span class="form-error" id="email-error" role="alert"></span>
-            </div>
-
-            <div class="form-field">
-              <label for="postcode"><span data-i18n="form.postcode">Postleitzahl oder Ort</span> <span class="required" aria-hidden="true">*</span></label>
-              <input type="text" id="postcode" name="postcode" required autocomplete="postal-code" aria-describedby="postcode-error">
-              <span class="form-error" id="postcode-error" role="alert"></span>
-            </div>
-
-            <fieldset class="form-field form-field--full" id="who-fieldset">
-              <legend><span data-i18n="form.who">Wer würde teilnehmen?</span> <span class="required" aria-hidden="true">*</span></legend>
-              <div class="radio-group">
-                <label class="radio-label"><input type="radio" name="who" value="just-me" required> <span data-i18n="form.whoJustMe">Nur ich</span></label>
-                <label class="radio-label"><input type="radio" name="who" value="me-and-child"> <span data-i18n="form.whoMeChild">Ich und ein Kind</span></label>
-                <label class="radio-label"><input type="radio" name="who" value="family"> <span data-i18n="form.whoFamily">Eine Familie</span></label>
-                <label class="radio-label"><input type="radio" name="who" value="friends"> <span data-i18n="form.whoFriends">Eine Freundesgruppe</span></label>
-                <label class="radio-label"><input type="radio" name="who" value="organisation"> <span data-i18n="form.whoOrg">Schule, Verein oder Organisation</span></label>
-                <label class="radio-label"><input type="radio" name="who" value="partner"> <span data-i18n="form.whoPartner">Ich interessiere mich als möglicher Partner</span></label>
-              </div>
-              <span class="form-error" id="who-error" role="alert"></span>
-            </fieldset>
-
-            <div class="form-field">
-              <label for="participants"><span data-i18n="form.participants">Ungefähre Anzahl der Teilnehmenden</span> <span class="required" aria-hidden="true">*</span></label>
-              <input type="number" id="participants" name="participants" min="1" max="999" required aria-describedby="participants-error">
-              <span class="form-error" id="participants-error" role="alert"></span>
-            </div>
-
-            <fieldset class="form-field form-field--full" id="age-fieldset">
-              <legend><span data-i18n="form.age">Altersgruppen der Teilnehmenden</span> <span class="required" aria-hidden="true">*</span></legend>
-              <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="age" value="under-6"> <span data-i18n="form.ageUnder6">Unter 6</span></label>
-                <label class="checkbox-label"><input type="checkbox" name="age" value="6-9"> <span data-i18n="form.age6to9">6–9</span></label>
-                <label class="checkbox-label"><input type="checkbox" name="age" value="10-13"> <span data-i18n="form.age10to13">10–13</span></label>
-                <label class="checkbox-label"><input type="checkbox" name="age" value="14-17"> <span data-i18n="form.age14to17">14–17</span></label>
-                <label class="checkbox-label"><input type="checkbox" name="age" value="18-plus"> <span data-i18n="form.age18plus">18+</span></label>
-              </div>
-              <span class="form-error" id="age-error" role="alert"></span>
-            </fieldset>
-
-            <fieldset class="form-field form-field--full" id="format-fieldset">
-              <legend><span data-i18n="form.format">Bevorzugtes Veranstaltungsformat</span> <span class="required" aria-hidden="true">*</span></legend>
-              <div class="radio-group">
-                <label class="radio-label"><input type="radio" name="format" value="short-playful" required> <span data-i18n="form.formatShort">Sehr kurz und spielerisch</span></label>
-                <label class="radio-label"><input type="radio" name="format" value="beginner"> <span data-i18n="form.formatBeginner">Einsteigerfreundlich</span></label>
-                <label class="radio-label"><input type="radio" name="format" value="moderate"> <span data-i18n="form.formatModerate">Eine moderate Herausforderung für Familien</span></label>
-                <label class="radio-label"><input type="radio" name="format" value="distance-options"> <span data-i18n="form.formatDistances">Mehrere Streckenlängen</span></label>
-                <label class="radio-label"><input type="radio" name="format" value="not-sure"> <span data-i18n="form.formatUnsure">Noch unsicher</span></label>
-              </div>
-              <span class="form-error" id="format-error" role="alert"></span>
-            </fieldset>
-
-            <fieldset class="form-field form-field--full" id="travel-fieldset">
-              <legend><span data-i18n="form.travel">Wie weit würden Sie anreisen?</span> <span class="required" aria-hidden="true">*</span></legend>
-              <div class="radio-group radio-group--inline">
-                <label class="radio-label"><input type="radio" name="travel" value="15km" required> <span data-i18n="form.travel15">Bis zu 15 km</span></label>
-                <label class="radio-label"><input type="radio" name="travel" value="30km"> <span data-i18n="form.travel30">Bis zu 30 km</span></label>
-                <label class="radio-label"><input type="radio" name="travel" value="60km"> <span data-i18n="form.travel60">Bis zu 60 km</span></label>
-                <label class="radio-label"><input type="radio" name="travel" value="further"> <span data-i18n="form.travelFurther">Für die passende Veranstaltung auch weiter</span></label>
-              </div>
-              <span class="form-error" id="travel-error" role="alert"></span>
-            </fieldset>
-
-            <fieldset class="form-field form-field--full" id="time-fieldset">
-              <legend><span data-i18n="form.time">Bevorzugte Jahreszeit</span> <span class="required" aria-hidden="true">*</span></legend>
-              <div class="radio-group radio-group--inline">
-                <label class="radio-label"><input type="radio" name="time" value="spring" required> <span data-i18n="form.timeSpring">Frühling</span></label>
-                <label class="radio-label"><input type="radio" name="time" value="summer"> <span data-i18n="form.timeSummer">Sommer</span></label>
-                <label class="radio-label"><input type="radio" name="time" value="autumn"> <span data-i18n="form.timeAutumn">Frühherbst</span></label>
-                <label class="radio-label"><input type="radio" name="time" value="no-preference"> <span data-i18n="form.timeNone">Keine Präferenz</span></label>
-              </div>
-              <span class="form-error" id="time-error" role="alert"></span>
-            </fieldset>
-
-            <fieldset class="form-field form-field--full" id="dietary-fieldset">
-              <legend data-i18n="form.dietary">Ernährungsbedürfnisse</legend>
-              <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="dietary" value="dairy-free"> <span data-i18n="form.dietaryDairy">Laktosefrei / milchfrei</span></label>
-                <label class="checkbox-label"><input type="checkbox" name="dietary" value="vegan"> <span data-i18n="form.dietaryVegan">Vegan</span></label>
-                <label class="checkbox-label"><input type="checkbox" name="dietary" value="nut-free"> <span data-i18n="form.dietaryNut">Nussfrei</span></label>
-                <label class="checkbox-label"><input type="checkbox" name="dietary" value="gluten-free"> <span data-i18n="form.dietaryGluten">Glutenfrei</span></label>
-                <label class="checkbox-label"><input type="checkbox" name="dietary" value="other"> <span data-i18n="form.dietaryOther">Sonstiges</span></label>
-              </div>
-            </fieldset>
-
-            <div class="form-field form-field--full">
-              <label for="comments" data-i18n="form.comments">Optionale Anmerkungen</label>
-              <textarea id="comments" name="comments" rows="4" data-i18n-placeholder="form.commentsPlaceholder" placeholder="Teilen Sie uns alles weitere mit, das bei der Gestaltung helfen könnte…"></textarea>
-            </div>
-
-            <div class="form-field form-field--full">
-              <label class="checkbox-label checkbox-label--standalone">
-                <input type="checkbox" name="keep-informed" value="yes">
-                <span data-i18n="form.keepInformed">Bitte halten Sie mich über die Entwicklung des Triple Gelato Triathlons auf dem Laufenden.</span>
+          <fieldset class="interest-type" id="interest-type-fieldset">
+            <legend class="visually-hidden" data-i18n="form.interestTypeLegend">Art des Interesses</legend>
+            <div class="interest-type-options">
+              <label class="interest-type-option">
+                <input type="radio" name="interest-type" value="participant" checked>
+                <span data-i18n="form.interestParticipant">Ich interessiere mich als Teilnehmer/in</span>
+              </label>
+              <label class="interest-type-option">
+                <input type="radio" name="interest-type" value="partner">
+                <span data-i18n="form.interestPartner">Ich interessiere mich als möglicher Partner</span>
               </label>
             </div>
+          </fieldset>
 
-            <div class="form-field form-field--full">
-              <label class="checkbox-label checkbox-label--standalone">
-                <input type="checkbox" id="partner-toggle" name="partner-interest" value="yes">
-                <span data-i18n="form.partnerToggle">Ich vertrete einen möglichen Veranstaltungsort, Verein, Verband, eine Gelateria, einen Hersteller oder Sponsor.</span>
-              </label>
+          <!-- Participant multi-step questionnaire -->
+          <div class="form-wizard" id="participant-wizard">
+            <div class="form-progress" aria-live="polite">
+              <div class="form-progress-meta">
+                <span class="form-progress-count" id="progress-count">1 / 5</span>
+                <span class="form-progress-label" id="progress-label" data-i18n="form.stepLabel1">Über euch</span>
+              </div>
+              <div class="form-progress-track" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" id="progress-bar">
+                <div class="form-progress-fill" id="progress-fill" style="width: 20%"></div>
+              </div>
             </div>
 
-            <div class="partner-fields" id="partner-fields" hidden>
-              <h3 class="partner-fields-title" data-i18n="form.partnerDetails">Partnerangaben</h3>
+            <div class="form-steps" id="form-steps">
+              <!-- Step 1 -->
+              <div class="form-step is-active" data-step="1" id="form-step-1">
+                <h3 class="form-step-title" id="step-title-1" data-i18n="form.stepTitle1">Wer wäre dabei?</h3>
+                <div class="form-step-fields">
+                  <fieldset class="form-field form-field--full" id="who-fieldset">
+                    <legend><span data-i18n="form.who">Wer würde teilnehmen?</span> <span class="required" aria-hidden="true">*</span></legend>
+                    <div class="radio-group">
+                      <label class="radio-label"><input type="radio" name="who" value="just-me"> <span data-i18n="form.whoJustMe">Nur ich</span></label>
+                      <label class="radio-label"><input type="radio" name="who" value="me-and-child"> <span data-i18n="form.whoMeChild">Ich und ein Kind</span></label>
+                      <label class="radio-label"><input type="radio" name="who" value="family"> <span data-i18n="form.whoFamily">Eine Familie</span></label>
+                      <label class="radio-label"><input type="radio" name="who" value="friends"> <span data-i18n="form.whoFriends">Eine Freundesgruppe</span></label>
+                      <label class="radio-label"><input type="radio" name="who" value="organisation"> <span data-i18n="form.whoOrg">Schule, Verein oder Organisation</span></label>
+                    </div>
+                    <span class="form-error" id="who-error" role="alert"></span>
+                  </fieldset>
+                  <div class="form-field">
+                    <label for="participants"><span data-i18n="form.participants">Ungefähre Anzahl der Teilnehmenden</span> <span class="required" aria-hidden="true">*</span></label>
+                    <input type="number" id="participants" name="participants" min="1" max="999" aria-describedby="participants-error">
+                    <span class="form-error" id="participants-error" role="alert"></span>
+                  </div>
+                  <fieldset class="form-field form-field--full" id="age-fieldset">
+                    <legend><span data-i18n="form.age">Altersgruppen der Teilnehmenden</span> <span class="required" aria-hidden="true">*</span></legend>
+                    <div class="checkbox-group">
+                      <label class="checkbox-label"><input type="checkbox" name="age" value="under-6"> <span data-i18n="form.ageUnder6">Unter 6</span></label>
+                      <label class="checkbox-label"><input type="checkbox" name="age" value="6-9"> <span data-i18n="form.age6to9">6–9</span></label>
+                      <label class="checkbox-label"><input type="checkbox" name="age" value="10-13"> <span data-i18n="form.age10to13">10–13</span></label>
+                      <label class="checkbox-label"><input type="checkbox" name="age" value="14-17"> <span data-i18n="form.age14to17">14–17</span></label>
+                      <label class="checkbox-label"><input type="checkbox" name="age" value="18-plus"> <span data-i18n="form.age18plus">18+</span></label>
+                    </div>
+                    <span class="form-error" id="age-error" role="alert"></span>
+                  </fieldset>
+                </div>
+              </div>
 
+              <!-- Step 2 -->
+              <div class="form-step" data-step="2" id="form-step-2" hidden>
+                <h3 class="form-step-title" id="step-title-2" data-i18n="form.stepTitle2">Wie soll sich das Event anfühlen?</h3>
+                <div class="form-step-fields">
+                  <fieldset class="form-field form-field--full" id="format-fieldset">
+                    <legend><span data-i18n="form.format">Bevorzugtes Veranstaltungsformat</span> <span class="required" aria-hidden="true">*</span></legend>
+                    <div class="radio-group">
+                      <label class="radio-label"><input type="radio" name="format" value="short-playful"> <span data-i18n="form.formatShort">Sehr kurz und spielerisch</span></label>
+                      <label class="radio-label"><input type="radio" name="format" value="beginner"> <span data-i18n="form.formatBeginner">Einsteigerfreundlich</span></label>
+                      <label class="radio-label"><input type="radio" name="format" value="moderate"> <span data-i18n="form.formatModerate">Eine moderate Herausforderung für Familien</span></label>
+                      <label class="radio-label"><input type="radio" name="format" value="distance-options"> <span data-i18n="form.formatDistances">Mehrere Streckenlängen</span></label>
+                      <label class="radio-label"><input type="radio" name="format" value="not-sure"> <span data-i18n="form.formatUnsure">Noch unsicher</span></label>
+                    </div>
+                    <span class="form-error" id="format-error" role="alert"></span>
+                  </fieldset>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="form-step" data-step="3" id="form-step-3" hidden>
+                <h3 class="form-step-title" id="step-title-3" data-i18n="form.stepTitle3">Wie weit würdet ihr dafür fahren?</h3>
+                <div class="form-step-fields">
+                  <fieldset class="form-field form-field--full" id="travel-fieldset">
+                    <legend><span data-i18n="form.travel">Wie weit würden Sie anreisen?</span> <span class="required" aria-hidden="true">*</span></legend>
+                    <div class="radio-group">
+                      <label class="radio-label"><input type="radio" name="travel" value="15km"> <span data-i18n="form.travel15">Bis zu 15 km</span></label>
+                      <label class="radio-label"><input type="radio" name="travel" value="30km"> <span data-i18n="form.travel30">Bis zu 30 km</span></label>
+                      <label class="radio-label"><input type="radio" name="travel" value="60km"> <span data-i18n="form.travel60">Bis zu 60 km</span></label>
+                      <label class="radio-label"><input type="radio" name="travel" value="further"> <span data-i18n="form.travelFurther">Für die passende Veranstaltung auch weiter</span></label>
+                    </div>
+                    <span class="form-error" id="travel-error" role="alert"></span>
+                  </fieldset>
+                  <fieldset class="form-field form-field--full" id="time-fieldset">
+                    <legend><span data-i18n="form.time">Bevorzugte Jahreszeit</span> <span class="required" aria-hidden="true">*</span></legend>
+                    <div class="radio-group radio-group--inline">
+                      <label class="radio-label"><input type="radio" name="time" value="spring"> <span data-i18n="form.timeSpring">Frühling</span></label>
+                      <label class="radio-label"><input type="radio" name="time" value="summer"> <span data-i18n="form.timeSummer">Sommer</span></label>
+                      <label class="radio-label"><input type="radio" name="time" value="autumn"> <span data-i18n="form.timeAutumn">Frühherbst</span></label>
+                      <label class="radio-label"><input type="radio" name="time" value="no-preference"> <span data-i18n="form.timeNone">Keine Präferenz</span></label>
+                    </div>
+                    <span class="form-error" id="time-error" role="alert"></span>
+                  </fieldset>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="form-step" data-step="4" id="form-step-4" hidden>
+                <h3 class="form-step-title" id="step-title-4" data-i18n="form.stepTitle4">Und was muss beim Eis beachtet werden?</h3>
+                <div class="form-step-fields">
+                  <fieldset class="form-field form-field--full" id="dietary-fieldset">
+                    <legend data-i18n="form.dietary">Ernährungsbedürfnisse</legend>
+                    <div class="checkbox-group">
+                      <label class="checkbox-label"><input type="checkbox" name="dietary" value="dairy-free"> <span data-i18n="form.dietaryDairy">Laktosefrei / milchfrei</span></label>
+                      <label class="checkbox-label"><input type="checkbox" name="dietary" value="vegan"> <span data-i18n="form.dietaryVegan">Vegan</span></label>
+                      <label class="checkbox-label"><input type="checkbox" name="dietary" value="nut-free"> <span data-i18n="form.dietaryNut">Nussfrei</span></label>
+                      <label class="checkbox-label"><input type="checkbox" name="dietary" value="gluten-free"> <span data-i18n="form.dietaryGluten">Glutenfrei</span></label>
+                      <label class="checkbox-label"><input type="checkbox" name="dietary" value="other"> <span data-i18n="form.dietaryOther">Sonstiges</span></label>
+                    </div>
+                  </fieldset>
+                  <div class="form-field form-field--full">
+                    <label for="comments" data-i18n="form.comments">Optionale Anmerkungen</label>
+                    <textarea id="comments" name="comments" rows="3" data-i18n-placeholder="form.commentsPlaceholderStep4" placeholder="Gibt es noch etwas, das uns bei der Planung helfen würde?"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 5 -->
+              <div class="form-step" data-step="5" id="form-step-5" hidden>
+                <h3 class="form-step-title" id="step-title-5" data-i18n="form.stepTitle5">Fast geschafft.</h3>
+                <div class="form-step-fields">
+                  <div class="form-field">
+                    <label for="name"><span data-i18n="form.name">Name</span> <span class="required" aria-hidden="true">*</span></label>
+                    <input type="text" id="name" name="name" autocomplete="name" aria-describedby="name-error">
+                    <span class="form-error" id="name-error" role="alert"></span>
+                  </div>
+                  <div class="form-field">
+                    <label for="email"><span data-i18n="form.email">E-Mail-Adresse</span> <span class="required" aria-hidden="true">*</span></label>
+                    <input type="email" id="email" name="email" autocomplete="email" aria-describedby="email-error">
+                    <span class="form-error" id="email-error" role="alert"></span>
+                  </div>
+                  <div class="form-field">
+                    <label for="postcode"><span data-i18n="form.postcode">Postleitzahl oder Ort</span> <span class="required" aria-hidden="true">*</span></label>
+                    <input type="text" id="postcode" name="postcode" autocomplete="postal-code" aria-describedby="postcode-error">
+                    <span class="form-error" id="postcode-error" role="alert"></span>
+                  </div>
+                  <div class="form-field form-field--full">
+                    <label class="checkbox-label checkbox-label--standalone">
+                      <input type="checkbox" name="keep-informed" value="yes">
+                      <span data-i18n="form.keepInformed">Bitte halten Sie mich über die Entwicklung des Triple Gelato Triathlons auf dem Laufenden.</span>
+                    </label>
+                  </div>
+                  <div class="form-field form-field--full">
+                    <label class="checkbox-label checkbox-label--standalone">
+                      <input type="checkbox" id="privacy-consent" name="privacy-consent" value="yes">
+                      <span data-i18n="form.privacy">Ich willige ein, dass meine Angaben zum Zweck der Interessensermittlung für dieses Veranstaltungskonzept gespeichert werden.</span> <span class="required" aria-hidden="true">*</span>
+                    </label>
+                    <span class="form-error" id="privacy-error" role="alert"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn--secondary btn--pill form-nav-back" id="form-back" hidden>
+                <span data-i18n="form.back">Zurück</span>
+              </button>
+              <button type="button" class="btn btn--primary btn--pill form-nav-next" id="form-next">
+                <span data-i18n="form.next">Weiter</span>
+                <span class="btn-arrow" aria-hidden="true">→</span>
+              </button>
+              <button type="submit" class="btn btn--primary btn--pill form-nav-submit" id="form-submit" hidden>
+                <span data-i18n="form.submit">Interesse absenden</span>
+                <span class="btn-arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Partner form -->
+          <div class="form-partner-panel" id="partner-panel" hidden>
+            <h3 class="form-step-title" id="partner-panel-title" data-i18n="form.partnerPanelTitle">Partnerangaben</h3>
+            <div class="form-step-fields">
               <div class="form-field">
                 <label for="org-name"><span data-i18n="form.orgName">Name der Organisation</span> <span class="required" aria-hidden="true">*</span></label>
                 <input type="text" id="org-name" name="org-name" aria-describedby="org-name-error">
                 <span class="form-error" id="org-name-error" role="alert"></span>
               </div>
-
               <div class="form-field">
                 <label for="org-type"><span data-i18n="form.orgType">Art der Organisation</span> <span class="required" aria-hidden="true">*</span></label>
                 <select id="org-type" name="org-type" aria-describedby="org-type-error">
@@ -427,43 +491,48 @@
                 </select>
                 <span class="form-error" id="org-type-error" role="alert"></span>
               </div>
-
               <div class="form-field">
                 <label for="org-website" data-i18n="form.orgWebsite">Website</label>
                 <input type="url" id="org-website" name="org-website" placeholder="https://">
               </div>
-
               <div class="form-field form-field--full">
                 <label for="org-contribution"><span data-i18n="form.orgContribution">Wie möchten Sie möglicherweise beitragen?</span> <span class="required" aria-hidden="true">*</span></label>
                 <textarea id="org-contribution" name="org-contribution" rows="3" aria-describedby="org-contribution-error"></textarea>
                 <span class="form-error" id="org-contribution-error" role="alert"></span>
               </div>
-
               <div class="form-field">
                 <label for="org-phone" data-i18n="form.orgPhone">Telefonnummer (optional)</label>
                 <input type="tel" id="org-phone" name="org-phone" autocomplete="tel">
               </div>
+              <div class="form-field">
+                <label for="partner-name"><span data-i18n="form.name">Name</span> <span class="required" aria-hidden="true">*</span></label>
+                <input type="text" id="partner-name" name="partner-name" autocomplete="name" aria-describedby="partner-name-error">
+                <span class="form-error" id="partner-name-error" role="alert"></span>
+              </div>
+              <div class="form-field">
+                <label for="partner-email"><span data-i18n="form.email">E-Mail-Adresse</span> <span class="required" aria-hidden="true">*</span></label>
+                <input type="email" id="partner-email" name="partner-email" autocomplete="email" aria-describedby="partner-email-error">
+                <span class="form-error" id="partner-email-error" role="alert"></span>
+              </div>
+              <div class="form-field form-field--full">
+                <label class="checkbox-label checkbox-label--standalone">
+                  <input type="checkbox" id="partner-privacy-consent" name="partner-privacy-consent" value="yes">
+                  <span data-i18n="form.privacy">Ich willige ein, dass meine Angaben zum Zweck der Interessensermittlung für dieses Veranstaltungskonzept gespeichert werden.</span> <span class="required" aria-hidden="true">*</span>
+                </label>
+                <span class="form-error" id="partner-privacy-error" role="alert"></span>
+              </div>
             </div>
-
-            <div class="form-field form-field--full">
-              <label class="checkbox-label checkbox-label--standalone">
-                <input type="checkbox" id="privacy-consent" name="privacy-consent" value="yes" required>
-                <span data-i18n="form.privacy">Ich willige ein, dass meine Angaben zum Zweck der Interessensermittlung für dieses Veranstaltungskonzept gespeichert werden.</span> <span class="required" aria-hidden="true">*</span>
-              </label>
-              <span class="form-error" id="privacy-error" role="alert"></span>
-            </div>
+            <button type="submit" class="btn btn--primary btn--pill btn--submit">
+              <span data-i18n="form.submit">Interesse absenden</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </button>
           </div>
-
-          <button type="submit" class="btn btn--primary btn--pill btn--submit">
-            <span data-i18n="form.submit">Interesse absenden</span>
-            <span class="btn-arrow" aria-hidden="true">→</span>
-          </button>
         </form>
 
         <div class="form-success" id="form-success" hidden role="status">
           <div class="form-success-icon" aria-hidden="true">✓</div>
-          <h3 data-i18n="form.successTitle">Vielen Dank für Ihre Interessensbekundung</h3>
-          <p data-i18n="form.successBody">Vielen Dank. Ihr Interesse wurde in diesem Prototyp gespeichert. Sobald der Live-Formularservice verbunden ist, werden Einsendungen an das Organisationsteam übermittelt.</p>
+          <h3 data-i18n="form.successTitle">Danke für dein Interesse!</h3>
+          <p data-i18n="form.successBody">Deine Angaben wurden in diesem Prototyp gespeichert. Sobald der Live-Formulardienst verbunden ist, werden Einsendungen direkt an das Organisationsteam übermittelt.</p>
           <button type="button" class="btn btn--secondary btn--pill" id="form-reset" data-i18n="form.reset">Weitere Antwort absenden</button>
         </div>
       </div>

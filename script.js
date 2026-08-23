@@ -144,6 +144,23 @@ const TRANSLATIONS = {
       lead: 'Sagen Sie uns, wie Ihr idealer Triple Gelato Triathlon aussehen würde. Frühe Interessensbekundungen helfen uns, Veranstaltungsorte, Sportverbände und Gelato-Partner mit echtem Interesse zu überzeugen.',
     },
     form: {
+      interestTypeLegend: 'Art des Interesses',
+      interestParticipant: 'Ich interessiere mich als Teilnehmer/in',
+      interestPartner: 'Ich interessiere mich als möglicher Partner',
+      stepTitle1: 'Wer wäre dabei?',
+      stepTitle2: 'Wie soll sich das Event anfühlen?',
+      stepTitle3: 'Wie weit würdet ihr dafür fahren?',
+      stepTitle4: 'Und was muss beim Eis beachtet werden?',
+      stepTitle5: 'Fast geschafft.',
+      stepLabel1: 'Über euch',
+      stepLabel2: 'Format',
+      stepLabel3: 'Anreise',
+      stepLabel4: 'Gelato',
+      stepLabel5: 'Kontakt',
+      back: 'Zurück',
+      next: 'Weiter',
+      partnerPanelTitle: 'Partnerangaben',
+      progressA11y: 'Fortschritt: Schritt {current} von {total}',
       name: 'Name',
       email: 'E-Mail-Adresse',
       postcode: 'Postleitzahl oder Ort',
@@ -185,6 +202,7 @@ const TRANSLATIONS = {
       dietaryOther: 'Sonstiges',
       comments: 'Optionale Anmerkungen',
       commentsPlaceholder: 'Teilen Sie uns alles weitere mit, das bei der Gestaltung helfen könnte…',
+      commentsPlaceholderStep4: 'Gibt es noch etwas, das uns bei der Planung helfen würde?',
       keepInformed: 'Bitte halten Sie mich über die Entwicklung des Triple Gelato Triathlons auf dem Laufenden.',
       partnerToggle: 'Ich vertrete einen möglichen Veranstaltungsort, Verein, Verband, eine Gelateria, einen Hersteller oder Sponsor.',
       partnerDetails: 'Partnerangaben',
@@ -203,8 +221,8 @@ const TRANSLATIONS = {
       orgPhone: 'Telefonnummer (optional)',
       privacy: 'Ich willige ein, dass meine Angaben zum Zweck der Interessensermittlung für dieses Veranstaltungskonzept gespeichert werden.',
       submit: 'Interesse absenden',
-      successTitle: 'Vielen Dank für Ihre Interessensbekundung',
-      successBody: 'Vielen Dank. Ihr Interesse wurde in diesem Prototyp gespeichert. Sobald der Live-Formularservice verbunden ist, werden Einsendungen an das Organisationsteam übermittelt.',
+      successTitle: 'Danke für dein Interesse!',
+      successBody: 'Deine Angaben wurden in diesem Prototyp gespeichert. Sobald der Live-Formulardienst verbunden ist, werden Einsendungen direkt an das Organisationsteam übermittelt.',
       reset: 'Weitere Antwort absenden',
       errorName: 'Bitte geben Sie Ihren Namen ein.',
       errorEmail: 'Bitte geben Sie Ihre E-Mail-Adresse ein.',
@@ -367,6 +385,23 @@ const TRANSLATIONS = {
       lead: 'Tell us what your ideal Triple Gelato Triathlon would look like. Early registrations will help us approach venues, sporting associations and gelato partners with real evidence of interest.',
     },
     form: {
+      interestTypeLegend: 'Type of interest',
+      interestParticipant: "I'm interested in taking part",
+      interestPartner: "I'm interested as a potential partner",
+      stepTitle1: 'Who would take part?',
+      stepTitle2: 'What kind of event would suit you?',
+      stepTitle3: 'How far would you travel?',
+      stepTitle4: 'And what should we consider for the gelato?',
+      stepTitle5: 'Nearly there.',
+      stepLabel1: 'About you',
+      stepLabel2: 'Format',
+      stepLabel3: 'Travel',
+      stepLabel4: 'Gelato',
+      stepLabel5: 'Contact',
+      back: 'Back',
+      next: 'Next',
+      partnerPanelTitle: 'Partner details',
+      progressA11y: 'Progress: step {current} of {total}',
       name: 'Name',
       email: 'Email address',
       postcode: 'Postcode or town',
@@ -408,6 +443,7 @@ const TRANSLATIONS = {
       dietaryOther: 'Other',
       comments: 'Optional comments',
       commentsPlaceholder: 'Tell us anything else that would help shape the event…',
+      commentsPlaceholderStep4: 'Anything else that would help us shape the event?',
       keepInformed: 'Please keep me informed about the development of the Triple Gelato Triathlon.',
       partnerToggle: 'I represent a possible venue, club, association, gelateria, manufacturer or sponsor.',
       partnerDetails: 'Partner details',
@@ -426,8 +462,8 @@ const TRANSLATIONS = {
       orgPhone: 'Contact telephone number',
       privacy: 'I consent to my details being stored for the purpose of gauging interest in this event concept.',
       submit: 'Submit my interest',
-      successTitle: 'Thank you for registering your interest',
-      successBody: 'Thank you. Your interest has been recorded in this prototype. Once the live form service is connected, submissions will be delivered to the organising team.',
+      successTitle: 'Thank you for your interest!',
+      successBody: 'Your response has been recorded in this prototype. Once the live form service is connected, submissions will be delivered directly to the organising team.',
       reset: 'Submit another response',
       errorName: 'Please enter your name.',
       errorEmail: 'Please enter your email address.',
@@ -560,6 +596,10 @@ function applyTranslations(lang) {
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.classList.toggle('is-active', btn.getAttribute('data-lang') === lang);
   });
+
+  if (typeof window.tgtRefreshFormUI === 'function') {
+    window.tgtRefreshFormUI();
+  }
 }
 
 function initI18n() {
@@ -767,37 +807,148 @@ function initParallax() {
 }
 
 /* --- Interest form --- */
+const FORM_TOTAL_STEPS = 5;
+
 function initForm() {
   const form = document.getElementById('interest-form');
   const success = document.getElementById('form-success');
   const resetBtn = document.getElementById('form-reset');
-  const partnerToggle = document.getElementById('partner-toggle');
-  const partnerFields = document.getElementById('partner-fields');
+  const participantWizard = document.getElementById('participant-wizard');
+  const partnerPanel = document.getElementById('partner-panel');
+  const backBtn = document.getElementById('form-back');
+  const nextBtn = document.getElementById('form-next');
+  const submitBtn = document.getElementById('form-submit');
 
   if (!form) return;
 
-  if (partnerToggle && partnerFields) {
-    partnerToggle.addEventListener('change', () => {
-      const show = partnerToggle.checked;
-      partnerFields.hidden = !show;
-      if (show) {
-        partnerFields.querySelector('#org-name')?.setAttribute('required', '');
-        partnerFields.querySelector('#org-type')?.setAttribute('required', '');
-        partnerFields.querySelector('#org-contribution')?.setAttribute('required', '');
-      } else {
-        partnerFields.querySelectorAll('[required]').forEach((el) => el.removeAttribute('required'));
-        clearPartnerErrors();
-      }
-    });
+  let currentStep = 1;
+  let isAnimating = false;
+
+  function getInterestMode() {
+    return form.querySelector('input[name="interest-type"]:checked')?.value || 'participant';
   }
 
-  form.querySelectorAll('input[name="who"]').forEach((radio) => {
+  function setInterestMode(mode) {
+    const isPartner = mode === 'partner';
+    if (participantWizard) participantWizard.hidden = isPartner;
+    if (partnerPanel) partnerPanel.hidden = !isPartner;
+    if (!isPartner) updateProgressUI();
+  }
+
+  function updateProgressUI() {
+    if (getInterestMode() !== 'participant') return;
+
+    const countEl = document.getElementById('progress-count');
+    const labelEl = document.getElementById('progress-label');
+    const fillEl = document.getElementById('progress-fill');
+    const barEl = document.getElementById('progress-bar');
+
+    if (countEl) countEl.textContent = `${currentStep} / ${FORM_TOTAL_STEPS}`;
+    if (labelEl) labelEl.textContent = t(`form.stepLabel${currentStep}`);
+    if (fillEl) fillEl.style.width = `${(currentStep / FORM_TOTAL_STEPS) * 100}%`;
+    if (barEl) {
+      barEl.setAttribute('aria-valuenow', String(currentStep));
+      barEl.setAttribute(
+        'aria-label',
+        t('form.progressA11y')
+          .replace('{current}', currentStep)
+          .replace('{total}', FORM_TOTAL_STEPS)
+      );
+    }
+
+    if (backBtn) backBtn.hidden = currentStep === 1;
+    if (nextBtn) nextBtn.hidden = currentStep === FORM_TOTAL_STEPS;
+    if (submitBtn) submitBtn.hidden = currentStep !== FORM_TOTAL_STEPS;
+  }
+
+  window.tgtRefreshFormUI = updateProgressUI;
+
+  function focusStep(step) {
+    const stepEl = document.getElementById(`form-step-${step}`);
+    const title = stepEl?.querySelector('.form-step-title');
+    const firstInput = stepEl?.querySelector('input:not([type="hidden"]), select, textarea');
+
+    if (title) {
+      title.setAttribute('tabindex', '-1');
+      title.focus({ preventScroll: true });
+    } else if (firstInput) {
+      firstInput.focus({ preventScroll: true });
+    }
+  }
+
+  function goToStep(step, animate = true) {
+    if (step < 1 || step > FORM_TOTAL_STEPS || step === currentStep || isAnimating) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const currentEl = document.getElementById(`form-step-${currentStep}`);
+    const nextEl = document.getElementById(`form-step-${step}`);
+
+    const activate = () => {
+      document.querySelectorAll('.form-step').forEach((el) => {
+        const stepNum = parseInt(el.dataset.step, 10);
+        const active = stepNum === step;
+        el.hidden = !active;
+        el.classList.toggle('is-active', active);
+        if (active) {
+          el.setAttribute('aria-current', 'step');
+        } else {
+          el.removeAttribute('aria-current');
+        }
+      });
+      currentStep = step;
+      updateProgressUI();
+      focusStep(step);
+    };
+
+    if (!animate || reducedMotion || !currentEl || !nextEl) {
+      activate();
+      return;
+    }
+
+    isAnimating = true;
+    currentEl.classList.add('form-step--exit');
+
+    setTimeout(() => {
+      currentEl.classList.remove('form-step--exit', 'is-active');
+      currentEl.hidden = true;
+      nextEl.hidden = false;
+      nextEl.classList.add('form-step--enter');
+      activate();
+      requestAnimationFrame(() => {
+        nextEl.classList.remove('form-step--enter');
+        isAnimating = false;
+      });
+    }, 250);
+  }
+
+  function clearStepErrors(step) {
+    const stepEl = document.getElementById(`form-step-${step}`);
+    if (!stepEl) return;
+    stepEl.querySelectorAll('.form-error').forEach((el) => { el.textContent = ''; });
+    stepEl.querySelectorAll('.is-invalid').forEach((el) => el.classList.remove('is-invalid'));
+  }
+
+  form.querySelectorAll('input[name="interest-type"]').forEach((radio) => {
     radio.addEventListener('change', () => {
-      if (radio.value === 'partner' && partnerToggle) {
-        partnerToggle.checked = true;
-        partnerToggle.dispatchEvent(new Event('change'));
-      }
+      clearAllErrors(form);
+      setInterestMode(radio.value);
     });
+  });
+
+  backBtn?.addEventListener('click', () => {
+    clearStepErrors(currentStep);
+    goToStep(currentStep - 1);
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    clearStepErrors(currentStep);
+    const errors = validateStep(currentStep, collectFormData(form));
+    if (Object.keys(errors).length > 0) {
+      displayErrors(errors);
+      focusFirstError(form, errors);
+      return;
+    }
+    goToStep(currentStep + 1);
   });
 
   form.addEventListener('submit', async (e) => {
@@ -805,7 +956,8 @@ function initForm() {
     clearAllErrors(form);
 
     const data = collectFormData(form);
-    const errors = validateForm(data, partnerToggle?.checked);
+    const isPartner = getInterestMode() === 'partner';
+    const errors = isPartner ? validatePartnerForm(data) : validateStep(5, data);
 
     if (Object.keys(errors).length > 0) {
       displayErrors(errors);
@@ -826,70 +978,120 @@ function initForm() {
 
   resetBtn?.addEventListener('click', () => {
     form.reset();
+    currentStep = 1;
+    const participantRadio = form.querySelector('input[name="interest-type"][value="participant"]');
+    if (participantRadio) participantRadio.checked = true;
+    setInterestMode('participant');
+    goToStep(1, false);
+    clearAllErrors(form);
     form.hidden = false;
     success.hidden = true;
-    if (partnerFields) partnerFields.hidden = true;
-    clearAllErrors(form);
     form.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
+
+  setInterestMode('participant');
+  goToStep(1, false);
+
+  window.tgtSetPartnerMode = () => {
+    const partnerRadio = form.querySelector('input[name="interest-type"][value="partner"]');
+    if (partnerRadio) {
+      partnerRadio.checked = true;
+      setInterestMode('partner');
+    }
+  };
 }
 
 function collectFormData(form) {
   const fd = new FormData(form);
   const age = fd.getAll('age');
   const dietary = fd.getAll('dietary');
+  const interestType = fd.get('interest-type') || 'participant';
+  const isPartner = interestType === 'partner';
 
   return {
-    name: fd.get('name')?.trim() || '',
-    email: fd.get('email')?.trim() || '',
-    postcode: fd.get('postcode')?.trim() || '',
-    who: fd.get('who') || '',
-    participants: fd.get('participants') || '',
-    age,
-    format: fd.get('format') || '',
-    travel: fd.get('travel') || '',
-    time: fd.get('time') || '',
-    dietary,
-    comments: fd.get('comments')?.trim() || '',
-    keepInformed: fd.get('keep-informed') === 'yes',
-    partnerInterest: fd.get('partner-interest') === 'yes',
+    interestType,
+    name: isPartner
+      ? fd.get('partner-name')?.trim() || ''
+      : fd.get('name')?.trim() || '',
+    email: isPartner
+      ? fd.get('partner-email')?.trim() || ''
+      : fd.get('email')?.trim() || '',
+    postcode: isPartner ? '' : fd.get('postcode')?.trim() || '',
+    who: isPartner ? '' : fd.get('who') || '',
+    participants: isPartner ? '' : fd.get('participants') || '',
+    age: isPartner ? [] : age,
+    format: isPartner ? '' : fd.get('format') || '',
+    travel: isPartner ? '' : fd.get('travel') || '',
+    time: isPartner ? '' : fd.get('time') || '',
+    dietary: isPartner ? [] : dietary,
+    comments: isPartner ? '' : fd.get('comments')?.trim() || '',
+    keepInformed: isPartner ? false : fd.get('keep-informed') === 'yes',
+    partnerInterest: isPartner,
     orgName: fd.get('org-name')?.trim() || '',
     orgType: fd.get('org-type') || '',
     orgWebsite: fd.get('org-website')?.trim() || '',
     orgContribution: fd.get('org-contribution')?.trim() || '',
     orgPhone: fd.get('org-phone')?.trim() || '',
-    privacyConsent: fd.get('privacy-consent') === 'yes',
+    privacyConsent: isPartner
+      ? fd.get('partner-privacy-consent') === 'yes'
+      : fd.get('privacy-consent') === 'yes',
     language: currentLang,
     submittedAt: new Date().toISOString(),
   };
 }
 
-function validateForm(data, isPartner) {
+function validateStep(step, data) {
   const errors = {};
 
-  if (!data.name) errors.name = t('form.errorName');
+  if (step === 1) {
+    if (!data.who) errors.who = t('form.errorWho');
+    if (!data.participants || parseInt(data.participants, 10) < 1) {
+      errors.participants = t('form.errorParticipants');
+    }
+    if (!data.age.length) errors.age = t('form.errorAge');
+  } else if (step === 2) {
+    if (!data.format) errors.format = t('form.errorFormat');
+  } else if (step === 3) {
+    if (!data.travel) errors.travel = t('form.errorTravel');
+    if (!data.time) errors.time = t('form.errorTime');
+  } else if (step === 5) {
+    if (!data.name) errors.name = t('form.errorName');
+    if (!data.email) {
+      errors.email = t('form.errorEmail');
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      errors.email = t('form.errorEmailInvalid');
+    }
+    if (!data.postcode) errors.postcode = t('form.errorPostcode');
+    if (!data.privacyConsent) errors.privacy = t('form.errorPrivacy');
+  }
+
+  return errors;
+}
+
+function validatePartnerForm(data) {
+  const errors = {};
+
+  if (!data.orgName) errors['org-name'] = t('form.errorOrgName');
+  if (!data.orgType) errors['org-type'] = t('form.errorOrgType');
+  if (!data.orgContribution) errors['org-contribution'] = t('form.errorOrgContribution');
+  if (!data.name) errors['partner-name'] = t('form.errorName');
   if (!data.email) {
-    errors.email = t('form.errorEmail');
+    errors['partner-email'] = t('form.errorEmail');
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-    errors.email = t('form.errorEmailInvalid');
+    errors['partner-email'] = t('form.errorEmailInvalid');
   }
-  if (!data.postcode) errors.postcode = t('form.errorPostcode');
-  if (!data.who) errors.who = t('form.errorWho');
-  if (!data.participants || parseInt(data.participants, 10) < 1) {
-    errors.participants = t('form.errorParticipants');
-  }
-  if (!data.age.length) errors.age = t('form.errorAge');
-  if (!data.format) errors.format = t('form.errorFormat');
-  if (!data.travel) errors.travel = t('form.errorTravel');
-  if (!data.time) errors.time = t('form.errorTime');
-  if (!data.privacyConsent) errors.privacy = t('form.errorPrivacy');
+  if (!data.privacyConsent) errors['partner-privacy'] = t('form.errorPrivacy');
 
-  if (isPartner) {
-    if (!data.orgName) errors['org-name'] = t('form.errorOrgName');
-    if (!data.orgType) errors['org-type'] = t('form.errorOrgType');
-    if (!data.orgContribution) errors['org-contribution'] = t('form.errorOrgContribution');
-  }
+  return errors;
+}
 
+function validateForm(data, isPartner) {
+  if (isPartner) return validatePartnerForm(data);
+
+  const errors = {};
+  for (let step = 1; step <= 5; step += 1) {
+    Object.assign(errors, validateStep(step, data));
+  }
   return errors;
 }
 
@@ -909,24 +1111,18 @@ function clearAllErrors(form) {
   form.querySelectorAll('.is-invalid').forEach((el) => el.classList.remove('is-invalid'));
 }
 
-function clearPartnerErrors() {
-  ['org-name', 'org-type', 'org-contribution'].forEach((field) => {
-    const errorEl = document.getElementById(`${field}-error`);
-    const inputEl = document.getElementById(field);
-    if (errorEl) errorEl.textContent = '';
-    if (inputEl) inputEl.classList.remove('is-invalid');
-  });
-}
-
 function focusFirstError(form, errors) {
   const firstKey = Object.keys(errors)[0];
   const fieldMap = {
-    who: '#who-fieldset',
-    age: '#age-fieldset',
-    format: '#format-fieldset',
-    travel: '#travel-fieldset',
-    time: '#time-fieldset',
+    who: '#who-fieldset input',
+    age: '#age-fieldset input',
+    format: '#format-fieldset input',
+    travel: '#travel-fieldset input',
+    time: '#time-fieldset input',
     privacy: '#privacy-consent',
+    'partner-privacy': '#partner-privacy-consent',
+    'partner-name': '#partner-name',
+    'partner-email': '#partner-email',
   };
 
   const selector = fieldMap[firstKey] || `#${firstKey}`;
@@ -994,14 +1190,14 @@ async function submitNetlify(data) {
 /* --- Partner CTA scrolls to form and enables partner mode --- */
 function initPartnerCTA() {
   const cta = document.getElementById('partner-cta');
-  const partnerToggle = document.getElementById('partner-toggle');
-  if (!cta || !partnerToggle) return;
+  if (!cta) return;
 
   cta.addEventListener('click', () => {
     setTimeout(() => {
-      partnerToggle.checked = true;
-      partnerToggle.dispatchEvent(new Event('change'));
-      document.getElementById('partner-fields')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (typeof window.tgtSetPartnerMode === 'function') {
+        window.tgtSetPartnerMode();
+      }
+      document.getElementById('partner-panel')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 400);
   });
 }
